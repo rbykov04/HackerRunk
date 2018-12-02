@@ -15,6 +15,13 @@ define testing
 	fi; 
 endef
 
+new_year_chaos: new_year_chaos_make
+	@$(call testing,$@-1)
+
+
+new_year_chaos_make:
+	@gcc -g -std=c++11 -Werror -Wall -pedantic new_year_chaos.cpp -lstdc++ -o new_year_chaos
+
 array_DS: array_DS_make
 	@$(call testing,$@-1)
 	@$(call testing,$@-2)
@@ -39,3 +46,5 @@ usage:
 	@echo "Hi, i am makefile"
 clean:
 	rm warm_repeated_string
+	rm array_DS
+	rm new_year_chaos
