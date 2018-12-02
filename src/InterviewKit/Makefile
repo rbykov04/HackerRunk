@@ -15,6 +15,14 @@ define testing
 	fi; 
 endef
 
+array_DS: array_DS_make
+	@$(call testing,$@-1)
+	@$(call testing,$@-2)
+	@$(call testing,$@-3)
+
+
+array_DS_make:
+	@gcc -g -std=c++11 -Werror -Wall -pedantic array_DS.cpp -lstdc++ -o array_DS
 
 warm_repeated_string: warm_repeated_string_make
 	@$(call testing,$@-1)
